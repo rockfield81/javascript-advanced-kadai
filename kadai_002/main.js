@@ -86,17 +86,16 @@ const rankCheck = score => {
     text = `あなたのランクはSです。\nおめでとうございます!`;
   }
   // 生成したメッセージと同時に文字列を返す
-  return `${score}文字打てました!\n【OK】リトライ / 【キャンセル】終了 `
+  return `${score}文字打てました!\n${text}\n【OK】リトライ / 【キャンセル】終了 `
 };
 
 // ゲーム終了
-const gameOver = id => {
-  untypedfield.style.display = 'none';
+const gameOver = (id) => {
   typedfield.style.display = 'none';
-  timeUp.style.display = 'block';
+  untypedfield.textContent = 'タイムアップ!';
   setTimeout(() => {
     const result = confirm(rankCheck(score));
-    if(result === true) {
+    if(result == true) {
       window.location.reload();
     }  
   }, 10)
